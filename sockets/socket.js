@@ -1,9 +1,15 @@
 const { io } = require('../app.js');
+const { validateJWT } = require('../helpers/jwt.js');
 
 
 io.on('connection', client => {
     console.log('Cliente conectado');
 
+    token = client.handshake.headers['Authorization'];
+    const [success, uid] = validateJWT(token);
+    if(!success){
+        client.disconnect();
+    }
 
     client.on('disconnect', () => {
         console.log('Cliente desconectado');
