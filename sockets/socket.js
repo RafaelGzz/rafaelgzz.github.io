@@ -5,8 +5,7 @@ const { validateJWT } = require('../helpers/jwt.js');
 io.on('connection', client => {
     console.log('Cliente conectado');
 
-    token = client.handshake.headers['Authorization'];
-    console.log(client.handshake , client.handshake.headers['Authorization']);
+    token = client.handshake.headers['authorization'];
     const [success, uid] = validateJWT(token);
     console.log(success, uid);
     if(!success){
