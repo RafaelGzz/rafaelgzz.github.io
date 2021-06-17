@@ -4,6 +4,7 @@ require('dotenv').config();
 
 // Routers
 const authRouter = require('./routes/auth')
+const usersRouter = require('./routes/users')
 
 // DB Connection
 const { dbConnection } = require('./database/config');
@@ -24,6 +25,7 @@ app.use(express.static(publicPath));
 
 // Uses
 app.use('/api/auth', authRouter);
+app.use('/api/users', usersRouter);
 
 // Launch
 server.listen(process.env.PORT, (err) => {
