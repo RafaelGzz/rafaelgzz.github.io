@@ -7,9 +7,11 @@ io.on('connection', client => {
 
     token = client.handshake.headers['Authorization'];
     const [success, uid] = validateJWT(token);
+    console.log(success, uid);
     if(!success){
-        client.disconnect();
+        return client.disconnect();
     }
+    console.log('Cliente autenticado');
 
     client.on('disconnect', () => {
         console.log('Cliente desconectado');
