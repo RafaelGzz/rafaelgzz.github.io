@@ -2,13 +2,18 @@ const Message = require('../models/message');
 
 const getMessages = async(req, res) => {
 
-    const uid = req.uid;
-    const sender = req.params.sender;
+    const me = req.uid;
+    const them = req.params.sender;
+
+    const last30 = await Message.find({
+            $or: [{ sender: me, receiver: them }, { sender: them, receiver: me }]
+        })
+        .sort({ createdAt: 'desc' })
+        .limit(30);
 
     res.json({
         ok: true,
-        uid,
-        sender
+        messages: last30
     });
 }
 
