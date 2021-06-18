@@ -1,6 +1,6 @@
 const { io } = require('../app.js');
 const { validateJWT } = require('../helpers/jwt.js');
-const { userDisconnected, userConnected } = require('../controllers/socket_controller');
+const { userDisconnected, userConnected, saveMessage } = require('../controllers/socket_controller');
 
 io.on('connection', (client) => {
 
@@ -19,7 +19,9 @@ io.on('connection', (client) => {
 
     // escuchar del cliente el mensaje personal
     client.on('mensaje-personal', (payload) => {
-        console.log(payload);
+
+        await saveMessage(payload);
+
         io.to(payload.receiver).emit('mensaje-personal', payload);
     });
 
