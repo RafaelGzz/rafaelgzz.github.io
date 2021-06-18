@@ -18,7 +18,7 @@ io.on('connection', (client) => {
     client.join(uid);
 
     // escuchar del cliente el mensaje personal
-    client.on('mensaje-personal', (payload) => {
+    client.on('mensaje-personal', async(payload) => {
 
         await saveMessage(payload);
 
