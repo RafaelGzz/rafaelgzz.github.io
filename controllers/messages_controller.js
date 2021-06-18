@@ -7,7 +7,8 @@ const getMessages = async(req, res) => {
 
     res.json({
         ok: true,
-        msg: 'mensajes'
+        uid,
+        sender
     });
 }
 
