@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Message = require('../models/message');
+const GroupMessage = require('../models/group_message');
 
 const userConnected = async(uid = '') => {
     const user = await User.findById(uid);
