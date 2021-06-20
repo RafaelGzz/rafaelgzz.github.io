@@ -19,7 +19,7 @@ io.on('connection', (client) => {
 
     client.on('mensaje-grupal', async(payload) => {
 
-        console.log(payload.message);
+        console.log(payload);
 
         await saveGroupMessage(payload);
         io.to(payload.receiver).emit('mensaje-grupal', payload);
