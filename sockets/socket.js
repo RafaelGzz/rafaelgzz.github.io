@@ -28,8 +28,9 @@ io.on('connection', (client) => {
 
         const group = await Group.findById(payload.groupId);
         group.users.forEach(user => {
-            if (group.sender != uid)
+            if (payload.sender != uid) {
                 io.to(user).emit('mensaje-grupal', payload);
+            }
         });
 
     });
