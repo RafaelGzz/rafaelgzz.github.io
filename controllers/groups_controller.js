@@ -4,6 +4,7 @@ const createGroup = async(req, res) => {
 
     try {
         const group = await Group(req.body);
+        await group.save();
         res.json({
             ok: true,
             group
