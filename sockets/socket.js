@@ -24,9 +24,9 @@ io.on('connection', (client) => {
 
         await saveGroupMessage(payload);
 
-        var group = await Group.find(payload.uid);
+        const group = await Group.findById(payload.uid);
         group.users.forEach(user => {
-            io.to(payload.receiver).emit('mensaje-grupal', payload);
+            io.to(user).emit('mensaje-grupal', payload);
         });
 
     });
