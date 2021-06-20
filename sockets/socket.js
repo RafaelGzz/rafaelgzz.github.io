@@ -17,6 +17,8 @@ io.on('connection', (client) => {
 
     // Ingresar usuario a sala especifica
     client.join(uid);
+    console.log(uid);
+    console.log("Conectado");
 
     client.on('mensaje-grupal', async(payload) => {
 

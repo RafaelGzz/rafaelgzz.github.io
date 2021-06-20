@@ -5,8 +5,6 @@ const Group = require('../models/group');
 
 const userConnected = async(uid = '') => {
     const user = await User.findById(uid);
-    console.log(user.uid);
-    console.log("Conectado");
     user.online = true;
     await user.save();
     return user;
