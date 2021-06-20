@@ -17,12 +17,19 @@ io.on('connection', (client) => {
     // Ingresar usuario a sala especifica
     client.join(uid);
 
+    client.on('mensaje-grupal', async(payload) => {
+
+        await saveMessage(payload);
+        io.to(payload.receiver).emit('mensaje-grupal', payload);
+
+    });
+
     // escuchar del cliente el mensaje personal
     client.on('mensaje-personal', async(payload) => {
 
         await saveMessage(payload);
-
         io.to(payload.receiver).emit('mensaje-personal', payload);
+
     });
 
 
@@ -30,12 +37,4 @@ io.on('connection', (client) => {
         userDisconnected(uid);
     });
 
-    client.on('mensaje', (mensaje) => {
-        console.log(mensaje);
-        io.emit('mensaje', { admin: 'Nuevo mensaje' });
-    });
-
-    // client.on('emitir-mensaje', (payload) =>{
-    //     client.broadcast.emit('nuevo-mensaje', payload);
-    // });
 });

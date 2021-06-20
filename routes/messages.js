@@ -1,8 +1,9 @@
 const router = require('express').Router();
-const { getMessages } = require('../controllers/messages_controller');
+const { getMessages, getGroupMessages } = require('../controllers/messages_controller');
 const { validateJWT } = require('../middlewares/validate-jwt');
 
 
-router.get('/:sender', validateJWT, getMessages);
+router.get('/:receiver', validateJWT, getMessages);
+router.get('/:groupId', validateJWT, getGroupMessages);
 
 module.exports = router;

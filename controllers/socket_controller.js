@@ -17,7 +17,6 @@ const userDisconnected = async(uid = '') => {
 
 const saveMessage = async(payload) => {
     try {
-
         const message = new Message(payload);
         await message.save();
 
