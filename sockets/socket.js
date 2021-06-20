@@ -1,6 +1,6 @@
 const { io } = require('../app.js');
 const { validateJWT } = require('../helpers/jwt.js');
-const { userDisconnected, userConnected, saveMessage } = require('../controllers/socket_controller');
+const { userDisconnected, userConnected, saveMessage, saveGroupMessage } = require('../controllers/socket_controller');
 
 io.on('connection', (client) => {
 

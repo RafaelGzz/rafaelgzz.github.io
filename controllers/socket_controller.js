@@ -40,5 +40,6 @@ const saveGroupMessage = async(payload) => {
 module.exports = {
     userConnected,
     userDisconnected,
-    saveMessage
+    saveMessage,
+    saveGroupMessage
 }
