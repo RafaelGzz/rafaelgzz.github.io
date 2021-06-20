@@ -9,10 +9,6 @@ const GroupSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
-    }],
-    messages: [{
-        type: Schema.Types.ObjectId,
-        ref: 'GroupMessage',
     }]
 });
 
