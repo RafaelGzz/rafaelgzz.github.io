@@ -20,7 +20,6 @@ io.on('connection', (client) => {
 
     client.on('mensaje-grupal', async(payload) => {
 
-        console.log("Cliente", payload.uid);
         console.log(payload);
 
         await saveGroupMessage(payload);
