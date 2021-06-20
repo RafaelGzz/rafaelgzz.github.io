@@ -1,6 +1,7 @@
 const { io } = require('../app.js');
 const { validateJWT } = require('../helpers/jwt.js');
 const { userDisconnected, userConnected, saveMessage, saveGroupMessage } = require('../controllers/socket_controller');
+const Group = require('../models/group.js');
 
 io.on('connection', (client) => {
 
@@ -22,7 +23,11 @@ io.on('connection', (client) => {
         console.log(payload);
 
         await saveGroupMessage(payload);
-        io.to(payload.receiver).emit('mensaje-grupal', payload);
+
+        var group = await Group.find(payload.uid);
+        group.users.forEach(user => {
+            io.to(payload.receiver).emit('mensaje-grupal', payload);
+        });
 
     });
 
