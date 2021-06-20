@@ -1,7 +1,7 @@
 const { check } = require('express-validator');
 
 const router = require('express').Router();
-const { createGroup } = require('../controllers/groups_controller');
+const { createGroup, getGroups } = require('../controllers/groups_controller');
 const { validateFields } = require('../middlewares/validate-fields');
 const { validateJWT } = require('../middlewares/validate-jwt');
 const Group = require('../models/group');
@@ -14,15 +14,6 @@ router.post('/', [
     validateFields
 ], createGroup);
 
-router.get('/', validateJWT, async(req, res) => {
-
-    const groups = await Group.find({});
-
-    res.json({
-        ok: true,
-        groups
-    });
-
-});
+router.get('/', validateJWT, getGroups);
 
 module.exports = router;

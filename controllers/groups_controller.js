@@ -19,6 +19,18 @@ const createGroup = async(req, res) => {
     }
 }
 
+const getGroups = async(req, res) => {
+
+    const groups = await Group.find({});
+
+    res.json({
+        ok: true,
+        groups
+    });
+
+}
+
 module.exports = {
-    createGroup
+    createGroup,
+    getGroups
 }
