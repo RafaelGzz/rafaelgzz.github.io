@@ -16,7 +16,7 @@ router.post('/', [
 
 router.get('/', validateJWT, async(req, res) => {
 
-    const groups = await Group.find({});
+    const groups = await Group.find({}).populate('messages').populate('users');
 
     res.json({
         ok: true,
