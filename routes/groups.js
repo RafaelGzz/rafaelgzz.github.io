@@ -4,8 +4,6 @@ const router = require('express').Router();
 const { createGroup } = require('../controllers/groups_controller');
 const { validateFields } = require('../middlewares/validate-fields');
 const { validateJWT } = require('../middlewares/validate-jwt');
-const Group = require('../models/group');
-
 
 router.post('/', [
     check('name', 'El nombre es obligatorio').not().isEmpty(),
@@ -13,16 +11,5 @@ router.post('/', [
     validateJWT,
     validateFields
 ], createGroup);
-
-router.get('/', validateJWT, async(req, res) => {
-
-    const groups = await Group.find({}).populate('messages');
-
-    res.json({
-        ok: true,
-        groups
-    });
-
-});
 
 module.exports = router;
