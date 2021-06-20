@@ -6,6 +6,7 @@ require('dotenv').config();
 const authRouter = require('./routes/auth');
 const usersRouter = require('./routes/users');
 const messagesRouter = require('./routes/messages');
+const groupsRouter = require('./routes/groups');
 
 // DB Connection
 const { dbConnection } = require('./database/config');
@@ -28,6 +29,7 @@ app.use(express.static(publicPath));
 app.use('/api/auth', authRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/messages', messagesRouter);
+app.use('/api/groups', groupsRouter);
 
 // Launch
 server.listen(process.env.PORT, (err) => {
