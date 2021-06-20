@@ -4,6 +4,6 @@ const { validateJWT } = require('../middlewares/validate-jwt');
 
 
 router.get('/:receiver', validateJWT, getMessages);
-router.get('/:groupId', validateJWT, getGroupMessages);
+router.get('/group/:groupId', validateJWT, getGroupMessages);
 
 module.exports = router;
