@@ -33,8 +33,12 @@ const saveGroupMessage = async(payload) => {
         const message = new GroupMessage(payload);
         await message.save();
 
-        const group = new Group.findById({ _id: message.groupId }).populate('messages');
+        console.log(message);
+
+        const group = new Group.findById(message.groupId).populate('messages');
         group.messages.push(message.groupId);
+
+        console.log(group);
         await group.save();
 
         return true;
