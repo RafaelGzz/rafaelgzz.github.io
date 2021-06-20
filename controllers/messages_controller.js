@@ -19,11 +19,10 @@ const getMessages = async(req, res) => {
 }
 
 const getGroupMessages = async(req, res) => {
-    const me = req.uid;
     const them = req.params.groupId;
 
     const last30 = await GroupMessage.find({
-            $or: [{ sender: me, receiver: them }, { sender: them, receiver: me }]
+            groupId: them
         })
         .sort({ createdAt: 'desc' })
         .limit(30);

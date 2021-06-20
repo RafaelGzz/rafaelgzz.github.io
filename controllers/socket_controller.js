@@ -26,6 +26,17 @@ const saveMessage = async(payload) => {
     }
 }
 
+const saveGroupMessage = async(payload) => {
+    try {
+        const message = new GroupMessage(payload);
+        await message.save();
+
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
 module.exports = {
     userConnected,
     userDisconnected,

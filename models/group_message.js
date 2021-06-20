@@ -1,16 +1,16 @@
 const { Schema, model } = require("mongoose");
 
 const GroupMessageSchema = Schema({
+    groupId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Group',
+        required: true
+    },
     sender: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    receivers: [{
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    }],
     message: {
         type: String,
         required: true
