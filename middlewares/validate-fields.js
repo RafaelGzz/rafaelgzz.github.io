@@ -7,7 +7,7 @@ const validateFields = (req, res, next) => {
         console.log(err);
         return res.status(400).json({
             ok: false,
-            msg: err.mapped()
+            msg: err.errors.map()
         });
     }
     next();
