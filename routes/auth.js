@@ -15,6 +15,7 @@ router.post('/newUser', [
     check('email', 'El email es obligatorio').not().isEmpty(),
     check('email', 'El email es invalido').isEmail(),
     check('password', 'La contraseña es obligatorio').not().isEmpty(),
+    check('password', 'La contraseña debe tener mínimo 8 caracteres').isLength({min: 8}),
     validateFields
 ], newUser);
 
