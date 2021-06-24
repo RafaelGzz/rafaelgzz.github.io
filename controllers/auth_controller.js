@@ -11,7 +11,14 @@ const newUser = async(req, res) => {
         if (emailExists) {
             return res.status(400).json({
                 ok: false,
-                msg: 'El correo ya está registrado'
+                msg: {
+                    "email":
+                    {
+                        "msg" :"El correo ya está registrado",
+                        "param": "email",
+                        "location": "body"
+                    }
+                }
             })
         }
 
