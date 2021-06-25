@@ -7,6 +7,7 @@ const authRouter = require('./routes/auth');
 const usersRouter = require('./routes/users');
 const messagesRouter = require('./routes/messages');
 const groupsRouter = require('./routes/groups');
+const awsRouter = require('./config-aws');
 
 // DB Connection
 const { dbConnection } = require('./database/config');
@@ -25,11 +26,13 @@ require('./sockets/socket.js');
 const publicPath = path.resolve(__dirname, 'public');
 app.use(express.static(publicPath));
 
+
 // Uses
 app.use('/api/auth', authRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/messages', messagesRouter);
 app.use('/api/groups', groupsRouter);
+app.use('/api/aws', awsRouter);
 
 // Launch
 server.listen(process.env.PORT, (err) => {

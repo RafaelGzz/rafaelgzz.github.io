@@ -14,6 +14,11 @@ const UserSchema = Schema({
         type: String,
         required: true
     },
+    imageUrl: {
+        type: String,
+        required: false,
+        default: 'https://squaredchat.s3.us-east-2.amazonaws.com/no-image.png'
+    },
     online: {
         type: Boolean,
         default: false,
