@@ -7,6 +7,6 @@ const { getUsers, updateUser } = require('../controllers/users_controller');
 const { validateJWT } = require('../middlewares/validate-jwt');
 
 router.get('/', validateJWT, getUsers);
-router.get('/update', validateJWT, updateUser)
+router.post('/update', validateJWT, updateUser)
 
 module.exports = router;
