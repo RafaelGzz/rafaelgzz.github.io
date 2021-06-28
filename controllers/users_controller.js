@@ -16,6 +16,15 @@ const getUsers = async(req, res) => {
 
 }
 
+const updateUser = async(req, res) => {
+    const success = await User.findByIdAndUpdate(req.uid, { imageUrl = req.imageUrl })
+
+    res.json({
+        ok: success,
+    })
+}
+
 module.exports = {
-    getUsers
+    getUsers,
+    updateUser
 }
