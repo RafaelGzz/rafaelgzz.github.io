@@ -1,3 +1,5 @@
+const uuid = require("uuid");
+
 module.exports.accessKeyId = "AKIAV7AQKHSXTA7V4BFR"; //TODO: Update
 module.exports.secretAccessKey = "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"; //TODO: Update
 module.exports.bucketName = "squaredchat"; //TODO: Update
