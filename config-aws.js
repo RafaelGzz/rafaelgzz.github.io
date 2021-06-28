@@ -21,7 +21,7 @@ const s3 = new AWS.S3({
 
 const getPresignedUrl = (req, res) => {
     let fileType = req.body.fileType;
-    console.log(fileType);
+    console.log(req.body);
     if (fileType != ".jpg" && fileType != ".png" && fileType != ".jpeg") {
         return res
             .status(403)
