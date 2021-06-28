@@ -19,8 +19,8 @@ const getUsers = async(req, res) => {
 const updateUser = async(req, res) => {
     console.log(req);
     const token = req.header('Authorization');
-    const user = await User.findByIdAndUpdate(req.uid, req.body);
-    user.save();
+    await User.findByIdAndUpdate(req.uid, req.body);
+    const user = User.findById(req.uid);
 
     res.json({
         ok: true,
