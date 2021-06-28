@@ -50,7 +50,7 @@ const getPresignedUrl = (req, res) => {
             success: true,
             message: "Url generated",
             uploadUrl: data,
-            downloadUrl: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}` + "." + fileType,
+            downloadUrl: `https://${S3_BUCKET}.${s3.region}.s3.amazonaws.com/${fileName}` + "." + fileType,
         };
         return res.status(201).json(returnData);
     });
