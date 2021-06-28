@@ -18,10 +18,11 @@ const getUsers = async(req, res) => {
 
 const updateUser = async(req, res) => {
     console.log(req);
-    const success = await User.findByIdAndUpdate(req.uid, { imageUrl: req.imageUrl })
+    const success = await User.findByIdAndUpdate(req.uid, req.body);
 
     res.json({
-        ok: success,
+        ok: true,
+        msg: success
     })
 }
 
