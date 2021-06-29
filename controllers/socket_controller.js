@@ -24,7 +24,7 @@ const saveMessage = async (payload) => {
         await message.save();
         console.log(message.conversation);
         const conversation = Conversation.findById(message.conversation);
-        console.log(conversation.messages);
+        console.log(conversation.sender);
 
         return true;
     } catch (error) {
