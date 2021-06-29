@@ -23,7 +23,7 @@ const saveMessage = async (payload) => {
         const message = new Message(payload);
         await message.save();
         const conversation = Conversation.findById(message.conversation);
-        print(conversation);
+        console.log(conversation);
         conversation.messages.push(message);
         await conversation.save();
 
