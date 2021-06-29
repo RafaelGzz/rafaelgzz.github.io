@@ -26,7 +26,8 @@ const validateJWT = (token = '') => {
         const { uid } = jwt.verify(token, process.env.JWT_KEY);
         return [true, uid];
 
-    } catch (error) {
+    } catch (error) { 
+console.log(error);
         return [false, null];
     }
 }

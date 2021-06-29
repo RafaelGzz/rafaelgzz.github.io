@@ -10,7 +10,8 @@ const createConversation = async(req, res) => {
             conversation
         });
 
-    } catch (error) {
+    } catch (error) { 
+console.log(error);
         console.log(error);
         return res.status(500).json({
             ok: false,
