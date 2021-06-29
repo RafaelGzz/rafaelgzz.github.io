@@ -21,7 +21,7 @@ const createConversation = async(req, res) => {
 
 const getConversations = async(req, res) => {
 
-    const conversations = await Conversation.find({sender: req.uid}).populate("receiver", ["name", "imageUrl", "createdAt"]);
+    const conversations = await Conversation.find({sender: req.uid}).populate("receiver", ["name", "imageUrl"]);
 
     res.json({
         ok: true,
