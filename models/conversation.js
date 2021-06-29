@@ -21,7 +21,7 @@ const ConversationSchema = Schema({
 });
 
 ConversationSchema.method('toJSON', function() {
-    const { __v, _id, createdAt, updatedAt, ...object } = this.toObject();
+    const { __v, _id, createdAt, ...object } = this.toObject();
     return object;
 });
 
