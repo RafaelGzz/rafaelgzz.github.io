@@ -16,10 +16,12 @@ const ConversationSchema = Schema({
         ref: 'Message',
         required: false
     }]
+}, {
+    timestamps: true
 });
 
 ConversationSchema.method('toJSON', function() {
-    const { __v, _id, ...object } = this.toObject();
+    const { __v, _id, createdAt, updatedAt, ...object } = this.toObject();
     return object;
 });
 
