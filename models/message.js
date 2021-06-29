@@ -14,6 +14,11 @@ const MessageSchema = Schema({
     message: {
         type: String,
         required: true
+    },
+    conversation: {
+        type: Schema.Types.ObjectId,
+        ref: 'Conversation',
+        required: true
     }
 }, {
     timestamps: true

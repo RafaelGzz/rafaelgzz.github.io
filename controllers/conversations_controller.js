@@ -1,23 +1,23 @@
 const Conversation = require('../models/conversation');
 
-// const createGroup = async(req, res) => {
+const createConversation = async(req, res) => {
 
-//     try {
-//         const group = await Group(req.body);
-//         await group.save();
-//         res.json({
-//             ok: true,
-//             group
-//         });
+    try {
+        const conversation = await Conversation(req.body);
+        await conversation.save();
+        res.json({
+            ok: true,
+            conversation
+        });
 
-//     } catch (error) {
-//         console.log(error);
-//         return res.status(500).json({
-//             ok: false,
-//             msg: 'Hable con el admin'
-//         });
-//     }
-// }
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            ok: false,
+            msg: 'Hable con el admin'
+        });
+    }
+}
 
 const getConversations = async(req, res) => {
 
@@ -31,5 +31,6 @@ const getConversations = async(req, res) => {
 }
 
 module.exports = {
+    createConversation,
     getConversations
 }
