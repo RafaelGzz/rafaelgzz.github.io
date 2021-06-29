@@ -5,7 +5,6 @@ const Group = require('../models/group.js');
 
 io.on('connection', (client) => {
 
-    console.log('Cliente conectado');
     token = client.handshake.headers['authorization'];
     const [success, uid] = validateJWT(token);
     if (!success) {
@@ -17,13 +16,9 @@ io.on('connection', (client) => {
 
     // Ingresar usuario a sala especifica
     client.join(uid);
-    console.log(uid);
-    console.log("Conectado");
+    console.log("$uid Conectado");
 
     client.on('mensaje-grupal', async(payload) => {
-
-        console.log(payload);
-
         await saveGroupMessage(payload);
 
         const group = await Group.findById(payload.groupId);
