@@ -1,7 +1,6 @@
 const User = require('../models/user');
 const Message = require('../models/message');
 const GroupMessage = require('../models/group_message');
-const Group = require('../models/group');
 const Conversation = require('../models/conversation');
 
 const userConnected = async (uid = '') => {
@@ -23,8 +22,9 @@ const saveMessage = async (payload) => {
         const message = new Message(payload);
         await message.save();
         console.log(message.conversation);
-        const conversation = Conversation.findById(message.conversation);
-        console.log(conversation.sender);
+        const conversation = Conversation.findById({_id: message.conversation});
+        conversation.messages.push(message);
+        conversation.save();
 
         return true;
     } catch (error) {
