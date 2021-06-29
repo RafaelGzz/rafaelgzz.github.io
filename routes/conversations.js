@@ -2,6 +2,7 @@ const { check } = require('express-validator');
 
 const router = require('express').Router();
 const { getConversations, createConversation } = require('../controllers/conversations_controller');
+const { validateFields } = require('../middlewares/validate-fields');
 const { validateJWT } = require('../middlewares/validate-jwt');
 
 
