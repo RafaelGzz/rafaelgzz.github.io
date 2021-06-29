@@ -22,6 +22,7 @@ const createConversation = async(req, res) => {
 const getConversations = async(req, res) => {
 
     const conversations = await Conversation.find({sender: req.uid});
+    conversations.populate(sender).populate(receiver);
 
     res.json({
         ok: true,
