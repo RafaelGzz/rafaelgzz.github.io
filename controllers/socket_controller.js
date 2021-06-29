@@ -20,10 +20,9 @@ const userDisconnected = async (uid = '') => {
 
 const saveMessage = async (payload) => {
     try {
-        console.log(payload);
         const message = new Message(payload);
         await message.save();
-        console.log(message);
+        console.log(message.conversation);
         const conversation = Conversation.findById(message.conversation).populate("messages");
         conversation.messages.push(message);
         await conversation.save();
