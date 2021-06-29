@@ -22,7 +22,7 @@ const saveMessage = async (payload) => {
     try {
         const message = new Message(payload);
         await message.save();
-        const conversation = Conversation.findById(payload.conversation);
+        const conversation = Conversation.findById(message.conversation);
         conversation.messages.push(message);
         await conversation.save();
 
