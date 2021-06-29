@@ -7,6 +7,7 @@ const authRouter = require('./routes/auth');
 const usersRouter = require('./routes/users');
 const messagesRouter = require('./routes/messages');
 const groupsRouter = require('./routes/groups');
+const conversationsRouter = require('./routes/conversations');
 const awsRouter = require('./config-aws');
 
 // DB Connection
@@ -32,6 +33,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/messages', messagesRouter);
 app.use('/api/groups', groupsRouter);
+app.use('/api/conversations', conversationsRouter);
 app.use('/api/aws', awsRouter);
 
 // Launch
