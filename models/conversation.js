@@ -16,8 +16,6 @@ const ConversationSchema = Schema({
         ref: 'Message',
         required: false
     }]
-}, {
-    timestamps: true
 });
 
 ConversationSchema.method('toJSON', function() {
