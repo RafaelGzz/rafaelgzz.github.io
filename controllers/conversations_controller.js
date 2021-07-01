@@ -10,8 +10,8 @@ const createConversation = async(req, res) => {
             conversation
         });
 
-    } catch (error) { 
-console.log(error);
+    } catch (error) {
+        console.log(error);
         console.log(error);
         return res.status(500).json({
             ok: false,
@@ -22,7 +22,7 @@ console.log(error);
 
 const getConversations = async(req, res) => {
 
-    const conversations = await Conversation.find({sender: req.uid}).populate("receiver", ["name", "imageUrl"]);
+    const conversations = await Conversation.find({ sender: req.uid }).populate("receiver", ["name", "imageUrl"]).populate("messages", ["message", "updatedAt"]);
 
     res.json({
         ok: true,
