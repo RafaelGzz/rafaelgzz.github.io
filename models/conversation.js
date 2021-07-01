@@ -11,6 +11,10 @@ const ConversationSchema = Schema({
         ref: 'User',
         required: true
     },
+    type:{
+        type: String,
+        required: true
+    },
     messages: [{
         type: Schema.Types.ObjectId,
         ref: 'Message',
