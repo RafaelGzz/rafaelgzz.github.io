@@ -34,7 +34,8 @@ const getConversations = async (req, res) => {
             path: "sender",
             model: "User",
             select: "name"
-        }
+        },
+        sort: {createdAt: 'desc'}
     }])
     .sort({ updatedAt: 'desc' });
     res.json({
