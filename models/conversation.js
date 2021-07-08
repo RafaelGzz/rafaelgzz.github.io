@@ -1,16 +1,11 @@
 const { Schema, model } = require("mongoose");
 
 const ConversationSchema = Schema({
-    sender: {
+    users: [{
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
-    },
-    receiver: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
+    }],
     type:{
         type: String,
         required: true
