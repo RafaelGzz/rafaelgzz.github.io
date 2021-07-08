@@ -25,7 +25,7 @@ const getConversations = async (req, res) => {
     const conversations = await Conversation.find({ 
         users: req.uid 
     })
-    .populate("users", ["name", "imageUrl", "online"])
+    .populate("users", ["name", "imageUrl", "online", "email", "uid"])
     .populate("messages", ["sender", "message", "updatedAt"])
     .sort({ updatedAt: 'desc' });
     res.json({
