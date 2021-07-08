@@ -26,7 +26,16 @@ const getConversations = async (req, res) => {
         users: req.uid 
     })
     .populate("users", ["name", "imageUrl", "online", "email", "uid"])
-    .populate("messages", ["sender", "message", "updatedAt"])
+    .populate([{
+        path: "messages",
+        model: "Message",
+        select: "sender message updatedAt",
+        populate: {
+            path: "sender",
+            model: "User",
+            select: "name"
+        }
+    }])
     .sort({ updatedAt: 'desc' });
     res.json({
         ok: true,

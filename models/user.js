@@ -22,7 +22,12 @@ const UserSchema = Schema({
     online: {
         type: Boolean,
         default: false,
-    }
+    },
+    friends: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: false
+    }]
 });
 
 UserSchema.method('toJSON', function() {
