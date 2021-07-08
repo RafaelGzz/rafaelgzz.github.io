@@ -7,8 +7,7 @@ const { validateJWT } = require('../middlewares/validate-jwt');
 
 
 router.post('/newConversation', [
-    check('sender', 'El sender es obligatorio').not().isEmpty(),
-    check('receiver', 'El receptor es obligatorio').not().isEmpty(),
+    check('users', 'Los usuarios son obligatorios').not().isEmpty(),
     validateJWT,
     validateFields
 ], createConversation);
