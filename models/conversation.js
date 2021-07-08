@@ -25,4 +25,10 @@ ConversationSchema.method('toJSON', function() {
     return object;
 });
 
+ConversationSchema.method('populate', function() {
+    const { __v, _id, ...object } = this.toObject();
+    object.uid = _id;
+    return object;
+});
+
 module.exports = model('Conversation', ConversationSchema);
