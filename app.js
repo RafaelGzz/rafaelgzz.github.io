@@ -24,7 +24,7 @@ module.exports.io = require('socket.io')(server);
 require('./sockets/socket.js');
 
 // Public Path
-const publicPath = path.resolve(__dirname);
+const publicPath = path.resolve(__dirname, 'public');
 app.use(express.static(publicPath));
 
 
