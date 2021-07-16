@@ -35,7 +35,7 @@ const getConversations = async (req, res) => {
             model: "User",
             select: "name"
         },
-        sort: {createdAt: 'asc'}
+        sort: {updatedAt: 'asc'}
     }])
     .sort({ updatedAt: 'desc' });
     res.json({
