@@ -1,22 +1,18 @@
 const uuid = require("uuid");
 
-module.exports.accessKeyId = "AKIAV7AQKHSXTA7V4BFR"; //TODO: Update
-module.exports.secretAccessKey = "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"; //TODO: Update
-module.exports.bucketName = "squaredchat"; //TODO: Update
-module.exports.region = "us-east-2"; //TODO: Update
+const region = "us-east-2"; //TODO: Update
 
 const AWS = require('aws-sdk');
-const awsConfig = require("./config-aws");
 const router = require('express').Router();
 
 //AWS CONFIG
-AWS.config.update({ region: awsConfig.region });
+AWS.config.update({ region: region });
 
-const S3_BUCKET = awsConfig.bucketName;
+const S3_BUCKET = "squaredchat";
 const s3 = new AWS.S3({
-    accessKeyId: awsConfig.accessKeyId,
-    secretAccessKey: awsConfig.secretAccessKey,
-    region: awsConfig.region,
+    accessKeyId: process.env.AWS_AKI,
+    secretAccessKey: process.env.AWS_SAK,
+    region: region,
     signatureVersion: "v4",
     //   useAccelerateEndpoint: true
 });
@@ -49,7 +45,7 @@ const getPresignedUrl = (req, res) => {
             success: true,
             message: "Url generated",
             uploadUrl: data,
-            downloadUrl: `https://${S3_BUCKET}.s3.${awsConfig.region}.amazonaws.com/${fileName}` + "." + fileType,
+            downloadUrl: `https://${S3_BUCKET}.s3.${region}.amazonaws.com/${fileName}` + "." + fileType,
         };
         return res.status(201).json(returnData);
     });
